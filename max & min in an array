@@ -1,0 +1,69 @@
+#include<iostream>
+#include<limits.h>
+using namespace std;
+
+
+
+
+
+void takeArrInput(int arr[], int size) {
+	cout<<"enter arrays elements: " << endl;
+	for(int i = 0; i<size; i++) {
+		cin>>arr[i];
+	}
+}
+
+void takeArrOutput(int arr[],int size) {
+
+	for(int i = 0; i<size; i++) {
+		cout<<arr[i]<<" ";
+	}
+}
+
+
+void maximum(int arr[], int size) {
+
+	int max = INT_MIN;
+
+	for(int j = 0; j<size; j++) {
+		if(max < arr[j]) {
+			max = arr[j];
+		}
+	}
+
+	cout<<"max is : "<< max << endl;
+}
+
+
+void minimum(int arr[], int size) {
+
+	int min = INT_MAX;
+
+	for(int j = 0; j<size; j++) {
+		if(min > arr[j]) {
+			min = arr[j];
+		}
+	}
+
+	cout<<"min is : "<< min << endl;
+}
+
+
+int main()
+{	
+	int n;
+	cin>>n;
+
+	int arr[n];
+
+	takeArrInput(arr,n);
+
+	maximum(arr,n);
+
+	minimum(arr,n);
+	
+
+
+
+	return 0;
+}
