@@ -1,0 +1,46 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+bool subsetArray(int arr1[], int arr2[], int m, int n) {
+
+	
+
+	sort(arr1, arr1+m);
+	sort(arr2, arr2+n);
+
+	int i = 0, j = 0;
+
+	while(i<m && j<n) {
+		if(arr1[i] == arr2[j]){
+			i++;
+			j++;
+		}else if(arr1[i] < arr2[j]){
+			i++;
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
+
+
+int main()
+{	
+cout<<"enter arr1[] elements greater than arr2[] elements **"<<endl<<endl;	
+
+	int a[] = {1,2,3,4,5};
+	int b[] = {1,2,3,4,5,6};
+
+	int size_of_a = sizeof(a)/sizeof(a[0]);
+	int size_of_b = sizeof(b)/sizeof(b[0]);
+
+	if(size_of_a < size_of_b){
+		cout<<"arr2[] has more elements than arr1[] so its  NOT A SUBSET";
+		
+	}else if(subsetArray(a,b,size_of_a,size_of_b))
+		cout<<"arr2[] is a subet of arr1[]";
+	else 
+		cout<<"arr2[] is NOT a subset of arr1[]";
+
+}
