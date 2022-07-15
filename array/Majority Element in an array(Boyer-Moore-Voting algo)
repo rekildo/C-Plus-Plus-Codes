@@ -1,0 +1,59 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+//boyre-moore-voting-algorithm
+
+int candidate(int a[], int n) {
+	int currIndex = 0;
+	int count = 1;
+
+	for(int i = 1; i<n; i++) {
+
+		if(a[currIndex] == a[i]){
+			count++;
+		}else{
+			count--;
+		}
+
+		if(count == 0){
+			currIndex = i;
+			count = 1;
+		}
+	}
+
+	return a[currIndex];
+}
+
+
+int majorElements(int a[], int size) {
+
+	int cand = candidate(a,size);
+
+	//count the currINdex value
+	int count = 0;
+	for(int i = 0; i<size; i++) {
+		if(a[cand] == a[i])
+			count++;
+	}
+
+	if(count > size/2)
+		return a[cand];
+
+	return false;
+
+}
+
+
+int main()
+{
+	int a[] ={2,1,2,3,2};
+	int size = sizeof(a)/sizeof(a[0]);
+
+	int value = majorElements(a,size);
+
+	if(value)
+		cout<<"majority element is: "<<value;
+	else
+		cout<< "DOESN'T EXISTS";
+
+}
