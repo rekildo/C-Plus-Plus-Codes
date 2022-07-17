@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+void printArr(int arr[], int size) {
+	for(int i = 0; i<size; i++) {
+		cout<<arr[i]<<" ";
+	}
+}
+
+void inputArr(int arr[], int size) {
+	for(int i = 0; i<size; i++) {
+		cin>>arr[i];
+	}
+}
+
+void kadaneAlgo(int a[], int n) {
+	int currMax = 0;
+	int max_so_far = INT_MIN;
+	int beg = 0;
+	int start = 0;
+	int end = 0;
+	for(int i =  0; i<n; i++) {
+
+		currMax = currMax + a[i];
+
+		//starting of a positive sequence
+		if(currMax < a[i]){
+			currMax = a[i];
+			beg = i;
+		}
+
+		//changing value of end only till max_so_far is maximum
+		if(max_so_far < currMax) {
+			max_so_far = currMax;
+			start = beg;
+			end = i;
+		}
+
+
+
+	}
+
+
+	for(int i = start; i<=end; i++ )
+		cout<<a[i]<<" ";
+}
+
+int main()
+{
+	int a[] ={-1,10,3,-8,9,1,-10};
+	int size = sizeof(a)/sizeof(a[0]);
+
+	kadaneAlgo(a,size);
+}
