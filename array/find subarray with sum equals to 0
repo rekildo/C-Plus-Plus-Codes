@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+
+//time: O(n^2), space: O(1)
+void findSum(int a[], int n) {
+
+	int start = 0;
+	int end = 0;
+
+	for(int i = 0; i<n; i++) {
+		int currSum = a[i];
+
+
+		for(int j = i+1; j<=n; j++) {
+			start = i;
+			if(currSum == 0)
+				{
+					 
+					 end = j-1;
+					 break;
+				}
+
+
+			currSum += a[j];
+		}
+		if(currSum == 0)
+				break;
+	}
+
+	for(int i = start; i<=end; i++) {
+		cout<< a[i] <<" ";
+	}
+}
+
+int main()
+{
+	int arr[] = {-3, -2, 2, 1, 6};
+	int n = sizeof(arr)/sizeof(arr[0]);
+
+	findSum(arr,n);
+}
