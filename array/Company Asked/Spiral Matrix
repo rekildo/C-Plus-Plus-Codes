@@ -1,0 +1,73 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void printArr(int a[][5], int m, int n) {
+	for(int i = 0; i<m; i++) {
+		for(int j = 0; j<n; j++) {
+			cout<<a[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+
+
+void spiral(int a[][4], int row, int col) {
+
+	int startCol = 0;
+	int endCol = col-1;
+	int startRow = 0;
+	int endRow = row-1;
+
+	int count = row * col;
+	while(count--) {
+		
+		for(int i = startCol; i<=endCol; i++ )
+		{
+			cout<< a[startCol][i] <<" ";
+			count--;
+		}
+
+		for(int i = ++startRow; i<=endRow; i++) {
+
+			cout << a[i][endCol] <<" ";
+			count--;
+		}
+
+		for(int i = --endCol; i>=startCol; i--) {
+
+			cout << a[endRow][i] << " ";
+			count--;
+		}
+
+		for(int i = --endRow; i>=startRow; i--) {
+			cout << a[i][startCol] << " ";
+			count--;
+		}
+
+		startCol++;
+	}
+}
+
+
+int main()
+{	
+	int arr[4][4] = {
+					  {1, 2, 3, 4},
+					  {12,13,14,5},
+					  {11,16,15,6},
+					  {10,9, 8, 7}
+					};
+
+	spiral(arr,4,4);
+	
+
+	int brr[5][5] = {
+		{1, 2, 3, 4, 5},
+		{16,17,18,19,6},
+		{15,24,25,20,7},
+		{14,23,22,21,8},
+		{13,12,11,10,9},
+	};
+	// spiral(brr,5,5);
+}
