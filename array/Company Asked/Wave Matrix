@@ -1,0 +1,55 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void printArr(int a[][4], int m, int n) {
+	for(int i = 0; i<m; i++) {
+		for(int j = 0; j<n; j++) {
+			cout<<a[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+
+
+void wave(int a[][4], int row, int col) {
+
+
+	int startCol = 0;
+	int endCol = col-1;
+	int startRow = 0;
+	int endRow = row-1;
+
+	while(row--) {
+
+		if(!(row % 2 == 0)){
+			for(int i = startCol; i<=endCol; i++) {
+				cout << a[startRow][i] <<" ";
+			}
+		}else{
+			for(int i = endCol; i>=startCol; i--) {
+				cout << a[startRow][i] << " ";
+			}
+		}
+		
+		startRow++;
+	}
+
+	
+}
+
+
+int main()
+{	
+	int arr[4][4] = {
+					  {1, 2, 3, 4},
+					  {8, 7, 6, 5},
+					  {9, 10,11,12},
+					  {16,15,14,13}
+					};
+
+	wave(arr,4,4);
+	
+
+
+}
